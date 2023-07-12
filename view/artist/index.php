@@ -37,30 +37,25 @@
         <?php endforeach;?>
 
 
+        <div class="btninfodiv">
+            <form action="/CreateNewartist" method="post">
+                <button class="infotn" type ="submit" >Create new artist</button>
+            </form>
+
+        </div>
 
 
-        <?php foreach ($artistinfo as $index => $info):?>
-
-            <tr>
-                <div class="projectlist">
-                    <td>
-                                                        <img src="<?php echo $info->image_path ?>" />
-
-                            <button type="submit" class="" name="artistid" value="<?php   ?>"><?php?></button>
-                        </form>
-                    </td>
-                </div>
-            </tr>
-        <?php endforeach;?>
+<!--        --><?php //foreach ($artistinfo as $index => $info):?>
+<!---->
+<!---->
+<!--                <div class="projectlist">-->
+<!--                    <img src="--><?php //echo $info->image_path ?><!--" />-->
+<!--                </div>-->
+<!---->
+<!--        --><?php //endforeach;?>
 </div>
 
 
-<div class="btninfodiv">
-    <form action="/CreateNewartist" method="post">
-        <button class="infotn" type ="submit" >Create new artist</button>
-    </form>
-
-</div>
 
 </body>
 </html>

@@ -47,6 +47,12 @@ class router
                       case 'artistinfo';
                           $this->controller->showartistinfo($_POST);
                           break;
+                      case 'addnewsong';
+                          $this->controller->addnewsong($_POST);
+                          break;
+                      case 'createSong';
+                          $this->controller->insertsongs($_POST,$_FILES);
+                          break;
 
 
                       default:

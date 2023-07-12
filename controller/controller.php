@@ -49,14 +49,29 @@ $getartistinfo = $this->Usermodel->ShowArtist();
 
     public function showartistinfo($id){
         $artistid = $id['artistid'];
+        var_dump($artistid);
         $artistinfo = $this->Usermodel->showartistinfo($artistid);
+        $getsongname= $this->Usermodel->getSonglist($artistid);
+        var_dump($getsongname);
 
-var_dump($artistinfo);
-        require "view/artist/index.php";
+//var_dump($artistinfo);
+        require "view/artist/artistinfo.php";
+    }
+    public function addnewsong($id){
+        $artistid = $id['artistid'];
+//        var_dump($artistid);
+        require "view/artist/addSong.php";
     }
 
-public function addnewsong(){
-    require "view/artist/addSong.php";
-}
+    public function insertsongs($name,$files){
+
+
+$this->Usermodel->insertsongs($name,$files);
+
+        require "view/artist/addSong.php";
+    }
+//public function addnewsong(){
+//    require "view/artist/addSong.php";
+//}
 
 }

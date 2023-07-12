@@ -15,7 +15,7 @@
 <body>
 <div class = "createtask">
     <form action="/Addartistinfo" method="post" enctype="multipart/form-data">
-        <h2>Create Task</h2>
+        <h2>add new artist</h2>
         <label for="project">artist Name</label>
         <input type="text"  id ="project" name ="artistName">
         <label for="project"> description </label>

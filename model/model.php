@@ -46,10 +46,10 @@ class usermodels extends database{
     }
 
 public function insertartistinfo($name,$files) {
-//    inserting the project
+//    inserting the artist
 
     $this->db->query("INSERT INTO artist (artist_name) values ('$name')");
-//    fetch the last inserted project id;
+//    fetch the last inserted artist id;
     $getlastid = $this->db->query("SELECT * FROM artist order by id desc limit 1 ");
     $lastid = $getlastid->fetch(PDO::FETCH_OBJ);
 // var_dump($lastid->id);
@@ -85,7 +85,38 @@ public function showartistinfo($id){
     return $artistinfo;
 }
 
+public function insertsongs($name,$files){
+    $SongName = $name['song_name'];
+    $Artistid = $name['artistid'];
+//    $songs = $files['songs'];
+    $song_desccription = $name['song_description'];
+
+    $this->db->query("INSERT INTO songs (song_name,song_description,artist_id) values ('$SongName','$song_desccription','$Artistid')");
+    $getlastid = $this->db->query("SELECT * FROM songs order by id desc limit 1 ");
+    $lastid = $getlastid->fetch(PDO::FETCH_OBJ);
+ var_dump($lastid->id);
+//    var_dump(count($files['Image']['name']));
+    $count = count($files['Image']['name']);
 
 
+    for($i=0;$i<$count;$i++){
+
+        $imagepath = "songsinfo/images/". $files['Image']['name'][$i];
+        $songpath = "songsinfo/songs/". $files['songs']['name'][$i];
+var_dump($imagepath);
+var_dump($songpath);
+        $imageName = $files['Image']['tmp_name'][$i];
+        $songName = $files['songs']['tmp_name'][$i];
+        move_uploaded_file($imageName,$imagepath);
+        move_uploaded_file($songName,$songpath);
+        $this->db->query("insert into songs_info (image_path,song_path,song_id) values ('$imagepath','$songpath','$lastid->id')");
+    }
+
+}
+
+public function getSonglist($id){
+    $selectquery = $this->db->query("Select * from songs where artist_id = '$id'")->fetch(PDO::FETCH_OBJ);
+return $selectquery;
+}
 
 }

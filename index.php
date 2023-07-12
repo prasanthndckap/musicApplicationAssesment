@@ -11,7 +11,9 @@ $router->post("/CreateNewartist","CreateNewartist");
 $router->post("/Addsong","Addsong");
 $router->post("/Addartistinfo","Addartistinfo");
 $router->post("/artistinfo","artistinfo");
-$router->post("/artistinfo","artistinfo");
+$router->post("/addnewsong","addnewsong");
+$router->post("/createSong","createSong");
+
 //$router->post("/artistinfo","artistinfo");
 
 
